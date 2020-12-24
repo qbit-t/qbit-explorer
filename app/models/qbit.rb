@@ -29,4 +29,8 @@ class Qbit
     handle(@url, 'gettransaction', txid)
   end
 
+  def getstate()
+    handle(@url, 'getstate')
+  end
+
 end
