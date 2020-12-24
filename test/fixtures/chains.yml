@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  name: 
+  chain: 
+  dapp: MyString
+
+two:
+  id: 
+  name: 
+  chain: 
+  dapp: MyString
