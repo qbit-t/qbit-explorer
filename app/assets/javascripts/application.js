@@ -14,3 +14,26 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+// document.getElementById("info").innerHTML = 'aaa';
+console.log("start");
+//document.getElementById("shardes").children[0].click();
+
+window.onload = function(){
+  console.log("load");
+  document.getElementById("shardes").children[0].children[0].click();
+  document.getElementById("info").innerHTML = 'aaaa';
+};
+
+function select_shard(chain, height)
+{
+  console.log("select");
+  shardes = document.getElementById("shardes");
+  for(i = 0; i < shardes.children.length; i++)
+  {
+    shardes.children[i].classList.remove('active');
+  }
+  document.getElementById(chain).classList.add('active');
+  document.getElementById("height").innerHTML = height;
+  document.getElementById("info").innerHTML = chain;
+}
+

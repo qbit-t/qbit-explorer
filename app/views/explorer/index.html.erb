@@ -1,2 +1,15 @@
-<h1>Explorer#index</h1>
-<p>Find me in app/views/explorer/index.html.erb</p>
+<div class="container">
+  <h3>Shardes</h3>
+  <ul id="shardes" class="nav nav-pills">
+    <% @chains.each do |chain| %>
+      <li id="<%= chain[:chain] %>" ><a href="javascript:select_shard('<%=chain[:chain]%>', <%=chain[:height]%>)"><%= chain[:name] %></a></li>
+    <% end %>
+  </ul>
+  <p id="info"></p>
+  <div class="panel panel-default">
+    <div class="panel-heading">Height</div>
+    <div id="height" class="panel-body"></div>
+  </div>
+</div>
+
+
