@@ -2,13 +2,36 @@
   <h3>Shardes</h3>
   <ul id="shardes" class="nav nav-pills">
     <% @chains.each do |chain| %>
-      <li id="<%= chain[:chain] %>" ><a href="javascript:select_shard('<%=chain[:chain]%>', <%=chain[:height]%>)"><%= chain[:name] %></a></li>
+      <li id="<%= chain[:chain] %>" ><a href="javascript:select_shard('<%=chain[:chain]%>', <%=chain[:height]%>, '<%=chain[:dapp]%>', '<%=chain[:state]%>')"><%= chain[:name] %></a></li>
     <% end %>
   </ul>
-  <p id="info"></p>
-  <div class="panel panel-default">
-    <div class="panel-heading">Height</div>
-    <div id="height" class="panel-body"></div>
+  <div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Chain</div>
+      <div id="chain" class="panel-body"></div>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Height</div>
+      <div id="height" class="panel-body"></div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">DAPP</div>
+      <div id="dapp" class="panel-body"></div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">State</div>
+      <div id="status" class="panel-body"></div>
+    </div>
+  </div>
   </div>
 </div>
 

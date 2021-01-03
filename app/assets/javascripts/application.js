@@ -21,10 +21,10 @@ console.log("start");
 window.onload = function(){
   console.log("load");
   document.getElementById("shardes").children[0].children[0].click();
-  document.getElementById("info").innerHTML = 'aaaa';
+  //document.getElementById("info").innerHTML = 'aaaa';
 };
 
-function select_shard(chain, height)
+function select_shard(chain, height, dapp, status)
 {
   console.log("select");
   shardes = document.getElementById("shardes");
@@ -33,7 +33,9 @@ function select_shard(chain, height)
     shardes.children[i].classList.remove('active');
   }
   document.getElementById(chain).classList.add('active');
+  document.getElementById("chain").innerHTML = chain;
   document.getElementById("height").innerHTML = height;
-  document.getElementById("info").innerHTML = chain;
+  document.getElementById("dapp").innerHTML = dapp;
+  document.getElementById("status").innerHTML = status;
 }
 
