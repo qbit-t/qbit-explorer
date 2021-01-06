@@ -33,4 +33,8 @@ class Qbit
     handle(@url, 'getstate')
   end
 
+  def getblock(chain, height)
+       handle(@url, 'getblockheaderbyheight', chain, height.to_s)
+  end
+
 end
