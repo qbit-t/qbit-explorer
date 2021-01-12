@@ -22,17 +22,18 @@ loop {
       while height < state_chain['height']
         height = height + 1
         block_data = q.getblock(state_chain['chain'], height)
+        full_block_data = q.getfullblock(block_data['result']['id'])
         p block_data
         block = Block.new
         block.chain_id = chain['id']
         block.height = height
         block.blockid = block_data['result']['id']
         block.save
-        full_block_data = q.getfullblock(block_data['result']['id'])
         full_block_data['result']['transactions'].each do |transaction|
           tx = Transaction.new
           tx.block_id = block.id
           tx.txid = transaction['id']
+          tx.chain_id = chain['id']
           tx.save
         end
         #break

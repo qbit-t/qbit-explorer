@@ -8,6 +8,16 @@ class ExplorerController < ApplicationController
     return result
   end
 
+  def get_transactions(chain_id)
+    transactions = Block.find_by_sql("select * from transactions where chain_id=#{chain_id} order by id desc limit 10")
+    result = []
+    transactions.each do |transaction|
+      result << [block.height, block.blockid, block.created_at.to_s]
+    end
+    return result
+  end
+
+
   def index
     chains_db = Chain.find_by_sql('select * from chains')
     q = Qbit.new
