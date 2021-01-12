@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210106124801) do
+ActiveRecord::Schema.define(version: 20210108164141) do
 
   create_table "blocks", force: :cascade do |t|
     t.integer  "chain_id",   limit: 4
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20210106124801) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer  "block_id",   limit: 4
-    t.string   "hash",       limit: 255
+    t.string   "txid",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

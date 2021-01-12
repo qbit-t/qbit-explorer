@@ -33,6 +33,21 @@
     </div>
   </div>
   </div>
+  <div id="blocks">
+  <% @chains.each do |chain| %>
+    <div class="container" id="blocks-<%=chain[:chain]%>" style="visibility: hidden;">
+      <p>Blocks</p>
+      <table class="table table-striped">
+        <thead><tr><th>Height</th><th>Hash</th><th>Time</th></tr></thead>
+        <tbody>
+          <% chain[:blocks].each do |block| %>
+            <tr><th><%=block[0]%></th><th><%=block[1]%></th><th><%=block[2]%></th></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  </div>
 </div>
 
 

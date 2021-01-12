@@ -37,5 +37,12 @@ function select_shard(chain, height, dapp, status)
   document.getElementById("height").innerHTML = height;
   document.getElementById("dapp").innerHTML = dapp;
   document.getElementById("status").innerHTML = status;
+  blocks = document.getElementById("blocks");
+  for(i = 0; i < blocks.children.length; i++)
+  {
+    blocks.children[i].style.visibility = "collapse";
+  }
+  block = document.getElementById("blocks-" + chain);
+  block.style.visibility = "visible";
 }
 

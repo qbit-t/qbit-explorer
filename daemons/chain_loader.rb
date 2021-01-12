@@ -28,7 +28,14 @@ loop {
         block.height = height
         block.blockid = block_data['result']['id']
         block.save
-        break
+        full_block_data = q.getfullblock(block_data['result']['id'])
+        full_block_data['result']['transactions'].each do |transaction|
+          tx = Transaction.new
+          tx.block_id = block.id
+          tx.txid = transaction['id']
+          tx.save
+        end
+        #break
       end
       p height
     end
