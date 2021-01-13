@@ -11,8 +11,8 @@ class ExplorerController < ApplicationController
   def get_transactions(chain_id)
     transactions = Block.find_by_sql("select * from transactions where chain_id=#{chain_id} order by id desc limit 10")
     result = []
-    transactions.each do |transaction|
-      result << [block.height, block.blockid, block.created_at.to_s]
+    transactions.each do |tx|
+      result << [tx.height, tx.txid, tx.created_at.to_s]
     end
     return result
   end
@@ -29,6 +29,7 @@ class ExplorerController < ApplicationController
       c[:chain] = chain['chain']
       c[:dapp] = chain['dapp']
       c[:blocks] = get_blocks(chain['id'])
+      c[:transactions] = get_transactions(chain['id'])
       state['result']['state']['chains'].each do |state_chain|
         c[:height] = state_chain['height']
         c[:time] = state_chain['time']
@@ -44,4 +45,6 @@ class ExplorerController < ApplicationController
 
   def transactions
   end
+
+
 end

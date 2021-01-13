@@ -1,0 +1,43 @@
+<div class="row">
+<div class="col-xs-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Chain</div>
+  <div class="panel-body"><%=@chain[:name]%></div>
+</div>
+</div>
+<div class="col-xs-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Chain hash</div>
+  <div class="panel-body"><%=@chain[:chain]%></div>
+</div>
+</div>
+<div class="col-xs-8">
+<div class="panel panel-default">
+  <div class="panel-heading">Hash</div>
+  <div class="panel-body"><%=@block[:blockid]%></div>
+</div>
+</div>
+<div class="col-xs-1">
+<div class="panel panel-default">
+  <div class="panel-heading">Height</div>
+  <div class="panel-body"><%=@block[:height]%></div>
+</div>
+</div>
+<div class="col-xs-3">
+<div class="panel panel-default">
+  <div class="panel-heading">Time</div>
+  <div class="panel-body"><%=@block[:created_at]%></div>
+</div>
+</div>
+</div>
+
+<h2>Transactions</h2>
+<table class="table table-striped">
+  <thead><tr><th>Height</th><th>Hash</th><th>Time</th></tr></thead>
+  <tbody>
+    <% @transactions.each do |tx| %>
+      <tr><th><%=tx[0]%></th><th><%=tx[1]%></th><th><%=tx[2]%></th></tr>
+    <% end %>
+  </tbody>
+</table>
+
