@@ -7,14 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <header class="navbar navbar-fixed-top navbar-inverse navbar-custom">
+    <header class="navbar navbar-fixed-top navbar-inverse navbar-custom" role="banner">
       <div class="container">
-        <%= link_to "QBIT Explorer", '#', id: "logo" %>
-        <nav>
+       <%= link_to "QBIT Explorer", '/', id: "logo" %>
+       <nav role="navigation">
           <ul class="nav navbar-nav navbar-left">
-            <li><%= link_to "Home",   '#' %></li>
-            <li><%= link_to "Blocks",   '#' %></li>
-            <li><%= link_to "Transactions", '#' %></li>
+            <li><%= top_nav_link "Home",   '/', '' %></li>
+            <li><%= top_nav_link "Blocks",   '/explorer/blocks', '' %></li>
+            <li><%= top_nav_link "Transactions", '/explorer/transactions', '' %></li>
           </ul>
         </nav>
       </div>

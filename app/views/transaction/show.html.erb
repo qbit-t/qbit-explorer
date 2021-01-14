@@ -1,0 +1,36 @@
+<h2>Transaction</h2>
+<div class="row">
+<div class="col-xs-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Hash</div>
+  <div class="panel-body"><%=@tx[:txid]%></div>
+</div>
+</div>
+<div class="col-xs-3">
+<div class="panel panel-default">
+  <div class="panel-heading">Chain</div>
+  <div class="panel-body"><%=@chain[:name]%></div>
+</div>
+</div>
+<div class="col-xs-3">
+<div class="panel panel-default">
+  <div class="panel-heading">Time</div>
+  <div class="panel-body"><%=@tx[:created_at]%></div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Block</div>
+  <div class="panel-body"><%=@block[:blockid]%></div>
+</div>
+</div>
+<div class="col-xs-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Confirmations</div>
+  <div class="panel-body"><%=@tx_data['result']['confirmations']%></div>
+</div>
+</div>
+</div>
+
