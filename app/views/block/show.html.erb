@@ -37,7 +37,7 @@
   <thead><tr><th>Height</th><th>Hash</th><th>Time</th></tr></thead>
   <tbody>
     <% @transactions.each do |tx| %>
-      <tr><th><%=tx[0]%></th><th><%=tx[1]%></th><th><%=tx[2]%></th></tr>
+      <tr><th><%=tx[0]%></th><th><%=link_to tx[1], "/transaction/" + tx[1] %></th><th><%=tx[2]%></th></tr>
     <% end %>
   </tbody>
 </table>

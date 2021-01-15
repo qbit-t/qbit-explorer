@@ -41,7 +41,7 @@
         <thead><tr><th>Height</th><th>Hash</th><th>Time</th></tr></thead>
         <tbody>
           <% chain[:blocks].each do |block| %>
-            <tr><th><%=block[0]%></th><th><%=block[1]%></th><th><%=block[2]%></th></tr>
+            <tr><th><%=block[0]%></th><th><%=link_to block[1], "/block/" + block[1] %></th><th><%=block[2]%></th></tr>
           <% end %>
         </tbody>
       </table>
@@ -50,7 +50,7 @@
         <thead><tr><th>Height</th><th>Hash</th><th>Time</th></tr></thead>
         <tbody>
           <% chain[:transactions].each do |tx| %>
-            <tr><th><%=tx[0]%></th><th><%=tx[1]%></th><th><%=tx[2]%></th></tr>
+            <tr><th><%=tx[0]%></th><th><%=link_to tx[1], "/transaction/"+tx[1] %></th><th><%=tx[2]%></th></tr>
           <% end %>
         </tbody>
       </table>

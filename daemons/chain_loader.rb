@@ -23,11 +23,12 @@ loop {
         height = height + 1
         block_data = q.getblock(state_chain['chain'], height)
         full_block_data = q.getfullblock(block_data['result']['id'])
-        p block_data
+        p full_block_data
         block = Block.new
         block.chain_id = chain['id']
         block.height = height
         block.blockid = block_data['result']['id']
+        block.time = block_data['result']['time']
         block.save
         full_block_data['result']['transactions'].each do |transaction|
           tx = Transaction.new
@@ -35,6 +36,7 @@ loop {
           tx.txid = transaction['id']
           tx.chain_id = chain['id']
           tx.height = height
+          tx.time = block.time
           tx.save
         end
         #break
