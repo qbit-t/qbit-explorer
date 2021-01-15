@@ -15,7 +15,7 @@
 <div class="col-xs-3">
 <div class="panel panel-default">
   <div class="panel-heading">Time</div>
-  <div class="panel-body"><%=@tx[:created_at]%></div>
+  <div class="panel-body"><%=Time.at(@tx[:time])%></div>
 </div>
 </div>
 </div>

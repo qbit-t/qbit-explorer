@@ -1,2 +1,65 @@
-<h1>Explorer#transactions</h1>
-<p>Find me in app/views/explorer/transactions.html.erb</p>
+<h2>Transactions</h2>
+<%= form_tag("/", method: "get") do %>
+<div class="input-group">
+  <%= text_field_tag :q, "", class:"form-control", placeholder:"Search" %>
+<div class="input-group-btn">
+  <%= button_tag(type: "submit", class: "btn btn-default") do %>
+    <i class="glyphicon glyphicon-search"></i>
+  <% end %>
+</div>
+</div>
+<% end %>
+
+<div class="container">
+  <h3>Shardes</h3>
+  <ul id="shardes" class="nav nav-pills">
+    <% @chains.each do |chain| %>
+      <li id="<%= chain[:chain] %>" ><a href="javascript:select_shard('<%=chain[:chain]%>', <%=chain[:height]%>, '<%=chain[:dapp]%>', '<%=chain[:state]%>')"><%= chain[:name] %></a></li>
+    <% end %>
+  </ul>
+  <div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">Chain</div>
+      <div id="chain" class="panel-body"></div>
+    </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Height</div>
+      <div id="height" class="panel-body"></div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">DAPP</div>
+      <div id="dapp" class="panel-body"></div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">State</div>
+      <div id="status" class="panel-body"></div>
+    </div>
+  </div>
+  </div>
+  <div id="blocks">
+  <% @chains.each do |chain| %>
+    <div class="container" id="blocks-<%=chain[:chain]%>" style="visibility: hidden;">
+      <h2>Transactions</h2>
+      <table class="table table-striped">
+        <thead><tr><th>Height</th><th>Hash</th><th>Time</th></tr></thead>
+        <tbody>
+          <% chain[:transactions].each do |tx| %>
+            <tr><th><%=tx[0]%></th><th><%=link_to tx[1], "/transaction/"+tx[1] %></th><th><%=tx[2]%></th></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+

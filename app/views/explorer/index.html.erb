@@ -1,3 +1,13 @@
+<%= form_tag("/", method: "get") do %> 
+<div class="input-group">
+  <%= text_field_tag :q, "", class:"form-control", placeholder:"Search" %>
+<div class="input-group-btn">
+  <%= button_tag(type: "submit", class: "btn btn-default") do %>
+    <i class="glyphicon glyphicon-search"></i>
+  <% end %>
+</div>
+</div>
+<% end %>
 <div class="container">
   <h3>Shardes</h3>
   <ul id="shardes" class="nav nav-pills">

@@ -1,18 +1,18 @@
 class ExplorerController < ApplicationController
   def get_blocks(chain_id, limit=10)
-    blocks = Block.find_by_sql("select * from blocks where chain_id=#{chain_id} order by id desc limit 10")
+    blocks = Block.find_by_sql("select * from blocks where chain_id=#{chain_id} order by id desc limit #{limit}")
     result = []
     blocks.each do |block|
-      result << [block.height, block.blockid, block.created_at.to_s]
+      result << [block.height, block.blockid, Time.at(block.time).to_s]
     end
     return result
   end
 
   def get_transactions(chain_id, limit=10)
-    transactions = Block.find_by_sql("select * from transactions where chain_id=#{chain_id} order by id desc limit 10")
+    transactions = Block.find_by_sql("select * from transactions where chain_id=#{chain_id} order by id desc limit #{limit}")
     result = []
     transactions.each do |tx|
-      result << [tx.height, tx.txid, tx.created_at.to_s]
+      result << [tx.height, tx.txid, Time.at(tx.time).to_s]
     end
     return result
   end
@@ -39,8 +39,11 @@ class ExplorerController < ApplicationController
     p @chains
   end
 
-
   def index
+    p params
+    if params["q"]
+      search params["q"]
+    end
     get_data
   end
 
@@ -49,7 +52,23 @@ class ExplorerController < ApplicationController
   end
 
   def transactions
+    get_data(0,20)
   end
 
-
+  def search(query)
+    p query
+    if query && query != ""
+      block = Block.find_by_blockid(query)
+      p block
+      if block
+        redirect_to "/block/"+query
+      end
+      tx = Transaction.find_by_txid(query)
+      if tx
+        redirect_to "/transaction/"+query
+      end
+    else
+      #not found
+    end
+  end
 end

@@ -4,7 +4,7 @@ class BlockController < ApplicationController
     transactions = Block.find_by_sql("select * from transactions where block_id=#{block_id}")
     result = []
     transactions.each do |tx|
-      result << [tx.height, tx.txid, tx.created_at.to_s]
+      result << [tx.height, tx.txid, Time.at(tx.time).to_s]
     end
     return result
   end
