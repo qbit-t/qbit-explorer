@@ -9,4 +9,11 @@ class TransactionController < ApplicationController
     p @tx_data
   end
 
+  def raw
+    p params["format"]
+    q = Qbit.new
+    @tx_data = q.gettransaction(params["format"])
+    @pp = JSON.pretty_generate(@tx_data)
+  end
+
 end
