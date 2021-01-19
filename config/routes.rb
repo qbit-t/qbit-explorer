@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   root 'explorer#index'
 
-  resources :block, only: [:show]
+  resources :block, only: [:show] do
+    collection do
+      get :raw
+    end
+  end
 
   resources :transaction, only: [:show] do
     collection do

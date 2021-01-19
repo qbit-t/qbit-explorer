@@ -15,4 +15,11 @@ class BlockController < ApplicationController
     @transactions = get_transactions(@block.id)
   end
 
+  def raw
+    p params["format"]
+    q = Qbit.new
+    @block_data = q.getfullblock(params["format"])
+    @pp = JSON.pretty_generate(@block_data)
+  end
+
 end
