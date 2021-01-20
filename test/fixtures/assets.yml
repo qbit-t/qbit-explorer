@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  emission: MyString
+  entity: MyString
+  scale: MyString
+  supply: MyString
+
+two:
+  description: MyString
+  emission: MyString
+  entity: MyString
+  scale: MyString
+  supply: MyString

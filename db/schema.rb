@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210115100914) do
+ActiveRecord::Schema.define(version: 20210120112036) do
+
+  create_table "assets", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.string   "emission",    limit: 255
+    t.string   "entity",      limit: 255
+    t.string   "scale",       limit: 255
+    t.string   "supply",      limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "blocks", force: :cascade do |t|
     t.integer  "chain_id",   limit: 4
