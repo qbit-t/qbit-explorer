@@ -56,6 +56,11 @@ class ExplorerController < ApplicationController
   end
 
   def assets
+    assets_data = Asset.find_by_sql("select * from assets")
+    @assets = []
+    assets_data.each do |a|
+      @assets << [a.entity, a.description, a.emission, a.scale, a.supply]
+    end
   end
 
   def search(query)
