@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get 'explorer/transactions'
 
+  get 'explorer/assets'
 
   root 'explorer#index'
 

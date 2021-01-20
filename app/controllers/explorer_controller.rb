@@ -55,6 +55,9 @@ class ExplorerController < ApplicationController
     get_data(0,20)
   end
 
+  def assets
+  end
+
   def search(query)
     p query
     if query && query != ""
