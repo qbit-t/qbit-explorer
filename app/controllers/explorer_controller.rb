@@ -59,7 +59,7 @@ class ExplorerController < ApplicationController
     assets_data = Asset.find_by_sql("select * from assets")
     @assets = []
     assets_data.each do |a|
-      @assets << [a.entity, a.description, a.emission, a.scale, a.supply]
+      @assets << [a.entity, a.description, a.emission, a.scale, a.supply, a.supply.to_f/a.scale.to_f, a.typetx, a.emissiontx]
     end
   end
 

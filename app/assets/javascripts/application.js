@@ -44,5 +44,7 @@ function select_shard(chain, height, dapp, status)
   }
   block = document.getElementById("blocks-" + chain);
   block.style.visibility = "visible";
+  block.style.position = "absolute";
+  block.style.top = "400px";
 }
 

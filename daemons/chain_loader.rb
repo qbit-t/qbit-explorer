@@ -21,7 +21,7 @@ loop {
       p height
       while height < state_chain['height']
         height = height + 1
-        p heigh
+        p height
         block_data = q.getblock(state_chain['chain'], height)
         full_block_data = q.getfullblock(block_data['result']['id'])
         #p full_block_data
@@ -49,7 +49,17 @@ loop {
             asset.entity = tx_props['entity']
             asset.scale = tx_props['scale']
             asset.supply = tx_props['supply']
+            asset.typetx = transaction['id']
             asset.save
+          end
+          if tx_data['type'] == 'asset_emission'
+            tx_data['out'].each do |out|
+              asset = Asset.find_by_typetx(out['asset'])
+              if asset
+                asset.emissiontx = transaction['id']
+                asset.save
+              end
+            end
           end
         end
         #break

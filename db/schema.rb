@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210120112036) do
+ActiveRecord::Schema.define(version: 20210121095047) do
 
   create_table "assets", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20210120112036) do
     t.string   "supply",      limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "type",        limit: 255
+    t.string   "typetx",      limit: 255
+    t.string   "emissiontx",  limit: 255
   end
 
   create_table "blocks", force: :cascade do |t|
