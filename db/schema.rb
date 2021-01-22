@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210121095047) do
+ActiveRecord::Schema.define(version: 20210122095438) do
 
   create_table "assets", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20210121095047) do
     t.string   "dapp",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "movings", force: :cascade do |t|
+    t.string   "address",    limit: 255
+    t.string   "txid",       limit: 255
+    t.float    "amount",     limit: 24
+    t.integer  "time",       limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "asset",      limit: 255
   end
 
   create_table "transactions", force: :cascade do |t|

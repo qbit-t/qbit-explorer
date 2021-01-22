@@ -41,6 +41,29 @@ loop {
           tx.save
           tx_data_resp = q.gettransaction(transaction['id'])
           tx_data = tx_data_resp['result']
+          tx_data['in'].each do |input|
+            if input['asset'] && input['address'] && input['value']
+              moving = Moving.new
+              moving.asset = input['asset']
+              moving.address =  input['address']
+              moving.amount = -(input['value'].to_f)
+              moving.txid = transaction['id']
+              moving.time = block.time
+              moving.save
+            end
+          end
+          tx_data['out'].each do |out|
+            if out['asset'] && out['address'] && out['value']
+              moving = Moving.new
+              moving.asset = out['asset']
+              moving.address =  out['address']
+              moving.amount = out['value'].to_f
+              moving.txid = transaction['id']
+              moving.time = block.time
+              moving.save
+            end
+          end
+
           if tx_data['type'] == 'asset_type'
             tx_props = tx_data['properties']
             asset = Asset.new
