@@ -1,0 +1,31 @@
+<h2>Address <%= @address %> </h2>
+<div class="row">
+<div class="col-xs-4">
+<div class="panel panel-default">
+  <div class="panel-heading">Balance</div>
+  <div class="panel-body"><%=@balance%></div>
+</div>
+</div>
+<div class="col-xs-4">
+<div class="panel panel-default">
+  <div class="panel-heading">Income</div>
+  <div class="panel-body"><%=@income%></div>
+</div>
+</div>
+<div class="col-xs-4">
+<div class="panel panel-default">
+  <div class="panel-heading">Outgoing</div>
+  <div class="panel-body"><%=@outgoing%></div>
+</div>
+</div>
+</div>
+<h2>Movings</h2>
+<table class="table table-striped">
+  <thead><tr><th>Amount</th><th>Transaction</th><th>Time</th></tr></thead>
+  <tbody>
+    <% @movings.each do |tx| %>
+      <tr><th><%=tx.amount%></th><th><%=link_to tx.txid, "/transaction/" + tx.txid %></th><th><%=Time.at(tx.time).to_s%></th></tr>
+    <% end %>
+  </tbody>
+</table>
+

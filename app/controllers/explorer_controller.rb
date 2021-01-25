@@ -75,6 +75,10 @@ class ExplorerController < ApplicationController
       if tx
         redirect_to "/transaction/"+query
       end
+      moving = Moving.find_by_address(query)
+      if moving
+        redirect_to "/address/"+query
+      end
     else
       #not found
     end
