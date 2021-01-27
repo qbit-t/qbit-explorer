@@ -42,14 +42,21 @@ loop {
           tx_data_resp = q.gettransaction(transaction['id'])
           tx_data = tx_data_resp['result']
           tx_data['in'].each do |input|
-            if input['asset'] && input['address'] && input['value']
-              moving = Moving.new
-              moving.asset = input['asset']
-              moving.address =  input['address']
-              moving.amount = -(input['value'].to_f)
-              moving.txid = transaction['id']
-              moving.time = block.time
-              moving.save
+            puts "index #{input['index']}"
+            if input['index'] >= 0
+              intx_data_resp = q.gettransaction(input['tx'])
+              intx_data = intx_data_resp['result']
+              intx_out = intx_data['out'][input['index']]
+              if intx_out['asset'] && intx_out['address'] && intx_out['value']
+                moving = Moving.new
+                moving.asset = intx_out['asset']
+                moving.address =  intx_out['address']
+                moving.amount = -(intx_out['value'].to_f)
+                moving.txid = transaction['id']
+                moving.time = block.time
+                moving.save
+                break
+              end
             end
           end
           tx_data['out'].each do |out|

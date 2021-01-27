@@ -24,7 +24,7 @@
   <thead><tr><th>Amount</th><th>Transaction</th><th>Time</th></tr></thead>
   <tbody>
     <% @movings.each do |tx| %>
-      <tr><th><%=tx.amount%></th><th><%=link_to tx.txid, "/transaction/" + tx.txid %></th><th><%=Time.at(tx.time).to_s%></th></tr>
+      <tr><th><%=number_with_precision(tx.amount, precision: 6) %></th><th><%=link_to tx.txid, "/transaction/" + tx.txid %></th><th><%=Time.at(tx.time).to_s%></th></tr>
     <% end %>
   </tbody>
 </table>
