@@ -30,9 +30,11 @@ class ExplorerController < ApplicationController
       c[:blocks] = get_blocks(chain['id'], blocks_limit)
       c[:transactions] = get_transactions(chain['id'], transactions_limit)
       state['result']['state']['chains'].each do |state_chain|
-        c[:height] = state_chain['height']
-        c[:time] = state_chain['time']
-        c[:state] = state_chain['state']
+        if c[:chain] == state_chain['chain']
+          c[:height] = state_chain['height']
+          c[:time] = state_chain['time']
+          c[:state] = state_chain['state']
+        end
       end
       @chains << c
     end

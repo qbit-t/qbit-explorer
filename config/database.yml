@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: qbit-explorer_production
-  username: qbit-explorer
-  password: <%= ENV['QBIT-EXPLORER_DATABASE_PASSWORD'] %>
+  database: qbit_explorer_development
+#  username: qbit-explorer
+#  password: <%= ENV['QBIT-EXPLORER_DATABASE_PASSWORD'] %>
