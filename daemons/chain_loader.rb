@@ -18,8 +18,9 @@ loop {
       sql ="select max(height) as height from blocks where chain_id=#{chain['id']}"
       res = ActiveRecord::Base.connection.exec_query(sql).first
       height = res['height'] || 0
-      logger.info "#{height}"
-      while height < state_chain['height']-5
+      max_height = state_chain['height']-5
+      logger.info "#{height} of #{max_height}"
+      while height < max_height
         height = height + 1
         logger.info "#{height}"
         block_data = q.getblock(state_chain['chain'], height)
