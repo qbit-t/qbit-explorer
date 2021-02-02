@@ -48,3 +48,19 @@ function select_shard(chain, height, dapp, status)
   block.style.top = "400px";
 }
 
+function select_asset(type, entity, balance, income, outgoing)
+{
+  assets = document.getElementById("assets");
+  for(i = 0; i < assets.children.length; i++)
+  {
+    assets.children[i].classList.remove('active');
+  }
+
+  document.getElementById(type).classList.add('active');
+  document.getElementById("type").innerHTML = type;
+  document.getElementById("entity").innerHTML = entity;
+  document.getElementById("balance").innerHTML = balance;
+  document.getElementById("income").innerHTML = income;
+  document.getElementById("outgoing").innerHTML = outgoing;
+}
+

@@ -1,21 +1,43 @@
 <h2>Address <%= @address %> </h2>
+<div class="container">
+  <h3>Assets</h3>
+  <ul id="assets" class="nav nav-pills">
+    <% @assets.each do |asset| %>
+      <li id="<%= asset[:type] %>" ><a href="javascript:select_asset('<%=asset[:type]%>', '<%=asset[:entity]%>', <%=asset[:balance]%>, <%=asset[:income]%>, <%=asset[:outgoing]%>)"><%= asset[:entity] %></a></li>
+    <% end %>
+  </ul>
+</div>
+<div class="row">
+<div class="col-xs-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Type</div>
+  <div class="panel-body" id="type"></div>
+</div>
+</div>
+<div class="col-xs-6">
+<div class="panel panel-default">
+  <div class="panel-heading">Entity</div>
+  <div class="panel-body" id="entity"></div>
+</div>
+</div>
+</div>
 <div class="row">
 <div class="col-xs-4">
 <div class="panel panel-default">
   <div class="panel-heading">Balance</div>
-  <div class="panel-body"><%=@balance%></div>
+  <div class="panel-body" id="balance"></div>
 </div>
 </div>
 <div class="col-xs-4">
 <div class="panel panel-default">
   <div class="panel-heading">Income</div>
-  <div class="panel-body"><%=@income%></div>
+  <div class="panel-body" id="income"></div>
 </div>
 </div>
 <div class="col-xs-4">
 <div class="panel panel-default">
   <div class="panel-heading">Outgoing</div>
-  <div class="panel-body"><%=@outgoing%></div>
+  <div class="panel-body" id="outgoing"></div>
 </div>
 </div>
 </div>
