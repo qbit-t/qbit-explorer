@@ -4,7 +4,7 @@ def log(msg)
   puts msg
 end
 
-logger = Logger.new("#{Rails.root}/log/chain_loadre.log")
+logger = Logger.new("#{Rails.root}/log/chain_loader.log")
 
 loop { 
   log "run chain load"
@@ -19,7 +19,7 @@ loop {
       res = ActiveRecord::Base.connection.exec_query(sql).first
       height = res['height'] || 0
       logger.info "#{height}"
-      while height < state_chain['height']
+      while height < state_chain['height']-5
         height = height + 1
         logger.info "#{height}"
         block_data = q.getblock(state_chain['chain'], height)
