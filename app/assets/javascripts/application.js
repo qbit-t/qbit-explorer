@@ -20,7 +20,8 @@ console.log("start");
 
 window.onload = function(){
   console.log("load");
-  document.getElementById("shardes").children[0].children[0].click();
+  if(document.getElementById("shardes")) document.getElementById("shardes").children[0].children[0].click();
+  if(document.getElementById("assets")) document.getElementById("assets").children[0].children[0].click();
   //document.getElementById("info").innerHTML = 'aaaa';
 };
 
@@ -62,5 +63,16 @@ function select_asset(type, entity, balance, income, outgoing)
   document.getElementById("balance").innerHTML = balance;
   document.getElementById("income").innerHTML = income;
   document.getElementById("outgoing").innerHTML = outgoing;
+
+  movings = document.getElementById("movings");
+  for(i = 0; i < movings.children.length; i++)
+  {
+    movings.children[i].style.visibility = "collapse";
+  }
+
+  moving = document.getElementById("movings-" + type);
+  moving.style.visibility = "visible";
+  moving.style.position = "absolute";
+  moving.style.top = "420px";
 }
 

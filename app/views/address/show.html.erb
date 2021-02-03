@@ -41,13 +41,19 @@
 </div>
 </div>
 </div>
-<h2>Movings</h2>
-<table class="table table-striped">
-  <thead><tr><th>Amount</th><th>Transaction</th><th>Time</th></tr></thead>
-  <tbody>
-    <% @movings.each do |tx| %>
-      <tr><th><%=number_with_precision(tx.amount, precision: 6) %></th><th><%=link_to tx.txid, "/transaction/" + tx.txid %></th><th><%=Time.at(tx.time).to_s%></th></tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="movings">
+  <% @assets.each do |asset| %>
+    <div class="container" id="movings-<%=asset[:type]%>" style="visibility: hidden;">
+      <h2>Movings</h2>
+      <table class="table table-striped">
+        <thead><tr><th>Amount</th><th>Transaction</th><th>Time</th></tr></thead>
+        <tbody>
+          <% asset[:movings].each do |tx| %>
+            <tr><th><%=number_with_precision(tx.amount, precision: 6) %></th><th><%=link_to tx.txid, "/transaction/" + tx.txid %></th><th><%=Time.at(tx.time).to_s%></th></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>
 

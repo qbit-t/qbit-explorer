@@ -6,7 +6,8 @@ end
 
 logger = Logger.new("#{Rails.root}/log/chain_loader.log")
 
-loop { 
+loop {
+begin 
   log "run chain load"
   q = Qbit.new
   state = q.getstate
@@ -18,7 +19,7 @@ loop {
       sql ="select max(height) as height from blocks where chain_id=#{chain['id']}"
       res = ActiveRecord::Base.connection.exec_query(sql).first
       height = res['height'] || 0
-      max_height = state_chain['height']-5
+      max_height = state_chain['height']-10
       logger.info "#{height} of #{max_height}"
       while height < max_height
         height = height + 1
@@ -102,4 +103,8 @@ loop {
     end
   end
   sleep(5)
+rescue Exception => e
+  logger.info "#{e.message}"
+  logger.info "#{e.backtrace.inspect}"
+end
 }
