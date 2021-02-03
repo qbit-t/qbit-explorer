@@ -60,9 +60,9 @@ function select_asset(type, entity, balance, income, outgoing)
   document.getElementById(type).classList.add('active');
   document.getElementById("type").innerHTML = type;
   document.getElementById("entity").innerHTML = entity;
-  document.getElementById("balance").innerHTML = balance;
-  document.getElementById("income").innerHTML = income;
-  document.getElementById("outgoing").innerHTML = outgoing;
+  document.getElementById("balance").innerHTML = balance.toPrecision(6);
+  document.getElementById("income").innerHTML = income.toPrecision(6);
+  document.getElementById("outgoing").innerHTML = outgoing.toPrecision(6);
 
   movings = document.getElementById("movings");
   for(i = 0; i < movings.children.length; i++)
