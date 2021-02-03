@@ -1,5 +1,5 @@
 <h2>Address <%= @address %> </h2>
-<div class="container">
+<div class="">
   <h3>Assets</h3>
   <ul id="assets" class="nav nav-pills">
     <% @assets.each do |asset| %>
@@ -43,7 +43,7 @@
 </div>
 <div id="movings">
   <% @assets.each do |asset| %>
-    <div class="container" id="movings-<%=asset[:type]%>" style="visibility: hidden;">
+    <div class="" id="movings-<%=asset[:type]%>" style="visibility: hidden;">
       <h2>Movings</h2>
       <table class="table table-striped">
         <thead><tr><th>Amount</th><th>Transaction</th><th>Time</th></tr></thead>
