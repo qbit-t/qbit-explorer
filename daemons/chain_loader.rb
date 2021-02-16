@@ -8,14 +8,14 @@ logger = Logger.new("#{Rails.root}/log/chain_loader.log")
 
 loop {
 begin 
-  log "run chain load"
+  #log "run chain load"
   q = Qbit.new
   state = q.getstate
   state['result']['state']['chains'].each do |state_chain|
     logger.info "load blocks for chain #{state_chain['chain']} till block #{state_chain['height']}"
     chain = Chain.where("chain='#{state_chain['chain']}'").first
     if chain
-      p chain['id']
+      #p chain['id']
       sql ="select max(height) as height from blocks where chain_id=#{chain['id']}"
       res = ActiveRecord::Base.connection.exec_query(sql).first
       height = res['height'] || 0
@@ -32,6 +32,7 @@ begin
         block.height = height
         block.blockid = block_data['result']['id']
         block.time = block_data['result']['time']
+        block.bits = block_data['result']['bits']
         block.save
         full_block_data['result']['transactions'].each do |transaction|
           tx_data_resp = q.gettransaction(transaction['id'])
@@ -61,7 +62,6 @@ begin
                 moving.txid = transaction['id']
                 moving.time = block.time
                 moving.save
-                break
               end
             end
           end

@@ -20,7 +20,7 @@ class ExplorerController < ApplicationController
   def get_data(blocks_limit=10, transactions_limit=10)
     chains_db = Chain.find_by_sql('select * from chains')
     q = Qbit.new
-    state = q.getstate
+    @state = q.getstate
     @chains = []
     chains_db.each do |chain|
       c = {}
@@ -29,7 +29,7 @@ class ExplorerController < ApplicationController
       c[:dapp] = chain['dapp']
       c[:blocks] = get_blocks(chain['id'], blocks_limit)
       c[:transactions] = get_transactions(chain['id'], transactions_limit)
-      state['result']['state']['chains'].each do |state_chain|
+      @state['result']['state']['chains'].each do |state_chain|
         if c[:chain] == state_chain['chain']
           c[:height] = state_chain['height']
           c[:time] = state_chain['time']

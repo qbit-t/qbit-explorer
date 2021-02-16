@@ -16,10 +16,16 @@
     <% end %>
   </ul>
   <div class="row">
-  <div class="col-xs-12">
+  <div class="col-xs-8">
     <div class="panel panel-default">
       <div class="panel-heading">Chain</div>
       <div id="chain" class="panel-body"></div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Peers</div>
+      <div id="peers" class="panel-body"><%= @state['result']['state']['peers_count'] %></div>
     </div>
   </div>
   </div>
