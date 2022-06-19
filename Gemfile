@@ -35,9 +35,12 @@ gem 'bootstrap-wysihtml5-rails', '~> 0.3.1.23'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'bigdecimal', '1.3.5'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem "passenger"
 end
 
 group :development do

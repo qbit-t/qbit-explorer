@@ -1,4 +1,4 @@
-require ENV["RAILS_ENV_PATH"]
+#require ENV["RAILS_ENV_PATH"]
 
 def log(msg)
   puts msg

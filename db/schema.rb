@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210122095438) do
+ActiveRecord::Schema.define(version: 20210216125122) do
 
   create_table "assets", force: :cascade do |t|
     t.string   "description", limit: 255
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20210122095438) do
     t.string   "supply",      limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.string   "type",        limit: 255
     t.string   "typetx",      limit: 255
     t.string   "emissiontx",  limit: 255
   end
@@ -33,7 +32,10 @@ ActiveRecord::Schema.define(version: 20210122095438) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "time",       limit: 4
+    t.integer  "bits",       limit: 4
   end
+
+  add_index "blocks", ["blockid"], name: "index_blocks_on_blockid", using: :btree
 
   create_table "chains", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -53,6 +55,10 @@ ActiveRecord::Schema.define(version: 20210122095438) do
     t.string   "asset",      limit: 255
   end
 
+  add_index "movings", ["address"], name: "index_movings_on_address", using: :btree
+  add_index "movings", ["amount"], name: "index_movings_on_amount", using: :btree
+  add_index "movings", ["asset"], name: "index_movings_on_asset", using: :btree
+
   create_table "transactions", force: :cascade do |t|
     t.integer  "block_id",   limit: 4
     t.string   "txid",       limit: 255
@@ -62,5 +68,8 @@ ActiveRecord::Schema.define(version: 20210122095438) do
     t.integer  "height",     limit: 4
     t.integer  "time",       limit: 4
   end
+
+  add_index "transactions", ["block_id"], name: "index_transactions_on_block_id", using: :btree
+  add_index "transactions", ["txid"], name: "index_transactions_on_txid", using: :btree
 
 end
