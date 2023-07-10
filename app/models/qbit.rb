@@ -7,7 +7,7 @@ class Qbit
   class ConnectionRefusedError < StandardError; end
 
   def initialize
-    @url = 'http://212.42.43.9:8080'
+    @url = 'http://46.8.220.98:8080'
   end
 
   def http_get_request(url, body)
